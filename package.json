@@ -1,0 +1,11 @@
+{
+  "name": "threepoints_devops_ws_practica02",
+  "version": "1.0.0",
+  "description": "Proyecto node de pruebas para usarlo como modelo en un ciclo CI/CD de DevOps para la asignatura de DevOps del Master de Fullstack de Threepoints",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
