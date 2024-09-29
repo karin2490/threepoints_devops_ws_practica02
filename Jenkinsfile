@@ -3,7 +3,7 @@
 pipeline {
     agent any
     environment {
-        WORKSPACE = "${env.WORKSPACE}"
+         SONARQUBE_ENV = 'SonarQube Local'
         BRANCH_NAME = "${env.BRANCH_NAME}"
     }
     stages {
@@ -18,7 +18,6 @@ pipeline {
                 stage('Pruebas de SAST') {
                     steps {
                         script {
-                            // Llama a la función de análisis de calidad de código
                             staticAnalysis(abortPipeline: false, qualityGateCheck: true)
                         }
                     }
