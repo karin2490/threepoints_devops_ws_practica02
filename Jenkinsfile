@@ -19,7 +19,7 @@ pipeline {
                     steps {
                         script {
                             // Llama a la función de análisis de calidad de código
-                            sonarAnalysis(abortPipeline: false, qualityGateCheck: true)
+                            staticAnalysis(abortPipeline: false, qualityGateCheck: true)
                         }
                     }
                 }
@@ -44,22 +44,7 @@ pipeline {
                 echo 'Construyendo el contenedor Docker...'
                 bat 'docker build -t devops_ws .'
             }
-        }
-        stage('Despliegue del servidor') {
-            steps {
-                script {
-                    bat '''
-                        docker ps -q -f name=devops >nul 2>&1
-                        if %errorlevel%==0 (
-                            docker stop devops
-                        ) else (
-                            echo "El contenedor 'devops' no está en ejecución."
-                        )
-                    '''
-                    bat 'docker run -d -p 8090:8090 --name devops devops_ws'
-                }
-            }
-        }
+        }        
     }
     post {
         always {
