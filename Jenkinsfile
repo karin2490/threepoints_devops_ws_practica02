@@ -4,6 +4,7 @@ pipeline {
     agent any
     environment {
         WORKSPACE = "${env.WORKSPACE}"
+        BRANCH_NAME = "${env.BRANCH_NAME}"
     }
     stages {
         stage('Checkout') {
@@ -25,6 +26,7 @@ pipeline {
                 stage('Imprimir Variables') {
                     steps {
                         echo "La ruta de WORKSPACE es: ${WORKSPACE}"
+                        echo "La rama es: ${env.BRANCH_NAME}"
                     }
                 }
             }
